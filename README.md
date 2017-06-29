@@ -1,8 +1,9 @@
 # iOS_Adv
 
-### iOS_Adv 문제 해결 저장소
+### iOS_Adv Repository
 
-| Study Week |   Commit Time    |   Title    |     Detail     |
-| :--------: | :--------------: | :--------: | :------------: |
 
+| Study Week |   Commit Time    |        Title         |
+| :--------: | :--------------: | :------------------: |
+|   Week1    | 2017.06.29 20:54 | Category Programming |
 
