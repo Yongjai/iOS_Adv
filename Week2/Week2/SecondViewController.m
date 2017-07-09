@@ -41,7 +41,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     int row = (int)indexPath.row;
   
-    if(row == 0){
+    if(row == 0) {
     ThirdViewController *controller = [[ThirdViewController alloc] init];
     [self presentViewController:controller animated:YES completion:nil];
     } else if (row == 1) {
