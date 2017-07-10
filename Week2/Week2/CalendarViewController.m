@@ -49,6 +49,10 @@
     int yVal = 180;
     int count = 1;
     
+    NSDateFormatter *day = [[NSDateFormatter alloc]init];
+    [day setDateFormat:@"YYYYMd"];
+    NSString *today = [day stringFromDate:[NSDate date]];
+    
     UILabel *yearMonth = [[UILabel alloc]initWithFrame:CGRectMake(112, 80, 150, 55)];
     [yearMonth setText:[NSString stringWithFormat:@"%ld년 %ld월", (long)year, (long)month]];
     [yearMonth setTextColor:[UIColor blackColor]];
@@ -64,8 +68,11 @@
     
     for (int startDay = 1; startDay <= dayNum; startDay++) {
         UIButton *dayNumBtn = [UIButton buttonWithType: UIButtonTypeRoundedRect];
+        NSString *date = [NSString stringWithFormat:@"%ld%ld%d", (long)year, (long)month, startDay];
         
-        if (startDay % 2 == 0) {
+        if ([date isEqualToString:today]) {
+            dayNumBtn.backgroundColor = [UIColor redColor];
+        } else if (startDay % 2 == 0) {
             dayNumBtn.backgroundColor = [UIColor colorWithRed:214.0f/255.0f green:214.0f/255.0f blue:214.0f/255.0f alpha:1.0];
         }
         
@@ -80,7 +87,6 @@
             newWeekDay = 0;
             count++;
         }
-        
         
         dayNumBtn.frame = CGRectMake(xCoord, yCoord, 40, 40);
         [dayNumBtn setTitle:[NSString stringWithFormat:@"%d",startDay]forState:UIControlStateNormal];
