@@ -1,0 +1,6 @@
+use_frameworks!
+target ‘Week3’ do
+pod 'Toaster'
+platform :ios, '8.0'
+
+end
