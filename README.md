@@ -8,7 +8,7 @@
 |  [Week1](https://github.com/Yongjai/iOS_Adv/tree/master/Week1) | 2017.06.29 20:54 | Category Programming |      |
 |  [Week2](https://github.com/Yongjai/iOS_Adv/tree/master/Week2) | 2017.07.09 23:06 | XIB & Storyboard & code |   [Study Link](https://github.com/Yongjai/TIL/blob/master/iOS/Objective-C/StoryboardvsNIBsvsCode.md/) // [결과물](https://github.com/Yongjai/iOS_Adv/blob/master/img/Calendar.png)  |
 |  [Week3](https://github.com/Yongjai/iOS_Adv/tree/master/Week3) | 2017.07.15 12:00 | Swift & Obj-C Mix and Match |     |
-|  [Week3](https://github.com/Yongjai/iOS_Adv/tree/master/Week4) | 2017.07.20 22:27 | UIViewController Transition |     |
+|  [Week4](https://github.com/Yongjai/iOS_Adv/tree/master/Week4) | 2017.07.20 22:27 | UIViewController Transition |     |
 |            |                  |                      |      |
 |            |                  |                      |      |
 |            |                  |                      |      |
