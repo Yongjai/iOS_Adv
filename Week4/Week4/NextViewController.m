@@ -21,6 +21,7 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
+
 - (IBAction)clickDismissBtn:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 }

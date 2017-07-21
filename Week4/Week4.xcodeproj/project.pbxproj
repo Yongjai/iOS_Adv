@@ -313,6 +313,7 @@
 				7C219D7D1F20C2F200AC6C08 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

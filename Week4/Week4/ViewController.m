@@ -24,10 +24,12 @@
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    NextViewController *nextViewController =[segue destinationViewController];
-    nextViewController.transitioningDelegate = self;
-    nextViewController.modalPresentationStyle = UIModalPresentationCustom;
-    
+    if ([[segue identifier] isEqualToString:@"nextSegue"]) {
+        NextViewController *nextViewController = [segue destinationViewController];
+        
+        nextViewController.transitioningDelegate = self;
+        nextViewController.modalPresentationStyle = UIModalPresentationCustom;
+    }
 //    segue.destinationViewController.transitioningDelegate = self;
 //    segue.destinationViewController.modalPresentationStyle = UIModalPresentationCustom;
 }
@@ -72,7 +74,6 @@
                             options:0
                          animations: ^{
                              toView.frame = viewFrame;
-                             toView.layer.transform = CATransform3DMakeRotation(0, 0, 1, 0);
                          } completion: ^(BOOL finished) {
                              [transitionContext completeTransition:![transitionContext transitionWasCancelled]];
                          }];
