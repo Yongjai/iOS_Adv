@@ -1,0 +1,3 @@
+target ‘Week7’ do
+  pod 'Realm', '~> 2.8'
+end
