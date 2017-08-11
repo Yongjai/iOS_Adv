@@ -37,9 +37,9 @@
     personText.age = [_ageTextField.text intValue];
   
     if (!_isEdit) {
-        personText.uuid = [[NSUUID UUID] UUIDString];
+        personText.id = [[NSUUID UUID] UUIDString];
     } else {
-        personText.uuid = _editSomething.uuid;
+        personText.id = _editSomething.id;
     }
     
     [personText saved];

@@ -19,6 +19,7 @@
     RLMResults<Person*> *personList;
     AddViewController *addViewController;
     RLMRealm *realm;
+    Person *datas;
 }
 
 - (void)viewDidLoad {
@@ -67,23 +68,41 @@
     [self presentViewController:addViewController animated:NO completion:nil];
 }
 
+//- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+//    if (editingStyle == UITableViewCellEditingStyleDelete) {
+//        Person *persons = [personList objectAtIndex:indexPath.row];
+//        [_dataArray addObject:persons];
+//        
+//        [_personTableView beginUpdates];
+//        [self.dataArray removeObjectAtIndex:indexPath.row];
+//        [_personTableView deleteRowsAtIndexPaths:_dataArray withRowAnimation:UITableViewRowAnimationRight];
+//
+//
+//        [realm deleteObject:persons];
+//        [realm commitWriteTransaction];
+//
+//    }
+//}
+
+
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     return YES;
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        Person *persons = [personList objectAtIndex:indexPath.row];
-        [_dataArray addObject:persons];
+    if (editingStyle == UITableViewCellEditingStyleNone) {
+//        Person *persons = [personList objectAtIndex:indexPath.row];
+//        [_dataArray addObject:persons];
+//        [_personTableView deleteRowsAtIndexPaths:_dataArray withRowAnimation:UITableViewRowAnimationRight];
+//        [persons removed];
+//        [self viewDidLoad];
+        Person *persons = [_dataArray objectAtIndex:indexPath.row];
+        [datas removed:[persons.id intValue]];
+        [_dataArray removeObjectAtIndex:indexPath.row];
         
-        [_personTableView beginUpdates];
-        [self.dataArray removeObjectAtIndex:indexPath.row];
-        [_personTableView deleteRowsAtIndexPaths:_dataArray withRowAnimation:UITableViewRowAnimationRight];
-        [_personTableView endUpdates];
-        [realm beginWriteTransaction];
-
-        [realm deleteObject:persons];
-        [realm commitWriteTransaction];
+        [_personTableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationRight];
+        
+        
 
     }
 }

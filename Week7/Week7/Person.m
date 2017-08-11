@@ -23,7 +23,7 @@
 }
 
 + (NSString *)primaryKey {
-    return @"uuid";
+    return @"id";
 }
 
 -(void)saved {
@@ -33,13 +33,15 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:@"SAVED" object:nil];
 }
 
-- (void)removed {
-    [realm transactionWithBlock:^{
-        [realm deleteObject:self];
-    }];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"REMOVED" object:nil];
-    
+- (void)removed:(int)id {
+    Person *person = [self getPerson:id];
+    [realm deleteObject:person];
 }
+
+- (Person *)getPerson:(int)id {
+    return [Person objectInRealm:realm forPrimaryKey:@(id)];
+}
+
 
 
 @end

@@ -11,11 +11,12 @@
 
 @interface Person : RLMObject
 
-@property NSString *uuid;
+@property NSString *id;
 @property NSString *name;
 @property NSInteger age;
-@property BOOL isMale;
+//@property BOOL isMale;
 
 - (void)saved;
-- (void)removed;
+- (void)removed:(int)id;
+- (Person *)getPerson:(int)id;
 @end
