@@ -28,7 +28,6 @@ ButtonViewController *buttonViewController;
     }
 }
 
-
 - (IBAction)displayNameChanged:(id)sender {
     if (_displayNameTextField.text.length > 1) {
         isNameTyped = YES;
@@ -50,7 +49,6 @@ ButtonViewController *buttonViewController;
     [super didReceiveMemoryWarning];
 }
 
-
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"showbuttonView"]) {
         buttonViewController = segue.destinationViewController;
@@ -67,8 +65,5 @@ ButtonViewController *buttonViewController;
     SessionContainer *newSessionContainer = [[SessionContainer alloc] initWithDisplayName:_displayNameTextField.text serviceType:_serviceTypeTextField.text];
     buttonViewController.sessionContainer = newSessionContainer;
 }
-
-
-
 
 @end
