@@ -14,12 +14,13 @@
 @end
 
 NSMutableArray *acctArr;
+NSMutableArray *pwArr;
 
 @implementation ViewController
 
 - (void)viewDidLoad {
+    [self getName];
     [super viewDidLoad];
-    [_tableView reloadData];
     // Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -39,7 +40,7 @@ NSMutableArray *acctArr;
     keychainItem[(__bridge id)kSecClass] = (__bridge id)kSecClassInternetPassword;
     keychainItem[(__bridge id)kSecAttrAccessible] = (__bridge id)kSecAttrAccessibleWhenUnlocked;
     keychainItem[(__bridge id)kSecAttrAccount] = username;
-  
+    
     if(SecItemCopyMatching((__bridge CFDictionaryRef)keychainItem, NULL) == noErr)
     {
         UIAlertController * alert = [UIAlertController
@@ -60,9 +61,12 @@ NSMutableArray *acctArr;
         NSLog(@"Error Code: %d", (int)sts);
     }
     NSLog(@"%@", keychainItem);
+    [self getName];
+    [_tableView reloadData];
 }
 
-- (void) getData {
+
+- (void) getName {
     NSMutableDictionary *query = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                   (__bridge id)kCFBooleanTrue, (__bridge id)kSecReturnAttributes,
                                   (__bridge id)kSecMatchLimitAll, (__bridge id)kSecMatchLimit,
@@ -85,16 +89,42 @@ NSMutableArray *acctArr;
         NSLog(@"%@", (__bridge id)result);
         if (result != NULL) {
             arr = [NSArray arrayWithObject:(__bridge id)result];
-            NSLog(@"%@", arr);
             CFRelease(result);
         }
     }
-    acctArr = [arr valueForKey:@"acct"];
+    NSMutableArray *extractedArr = [arr valueForKey:@"acct"];
+    
+    acctArr = extractedArr[0];
+    
+    NSLog(@"%@", acctArr);
 }
+
+//- (void) getNumber {
+//    NSMutableDictionary *keychainItem = [NSMutableDictionary dictionary];
+//
+//    for (int i = 0; i < [acctArr count]; i++) {
+//        keychainItem[(__bridge id)kSecClass] = (__bridge id)kSecClassInternetPassword;
+//        keychainItem[(__bridge id)kSecAttrAccessible] = (__bridge id)kSecAttrAccessibleWhenUnlocked;
+//        keychainItem[(__bridge id)kSecAttrAccount] = acctArr[i];
+//
+//        keychainItem[(__bridge id)kSecReturnData] = (__bridge id)kCFBooleanTrue;
+//        keychainItem[(__bridge id)kSecReturnAttributes] = (__bridge id)kCFBooleanTrue;
+//
+//        CFDictionaryRef result = nil;
+//        OSStatus sts = SecItemCopyMatching((__bridge CFDictionaryRef)keychainItem, (CFTypeRef *)&result);
+//
+//        if(sts == noErr) {
+//            NSDictionary *resultDict = (__bridge_transfer NSDictionary *)result;
+//            NSData *pswd = resultDict[(__bridge id)kSecValueData];
+//            [pwArr addObject:[NSString stringWithFormat:@"%@", [[NSString alloc] initWithData:pswd encoding:NSUTF8StringEncoding]]];
+//            NSLog(@"%@", pwArr);
+//        }
+//    }
+//}
 
 
 - (IBAction)clickedGetBtn:(id)sender {
-    [self getData];
+    [self getName];
     [_tableView reloadData];
 }
 
@@ -125,6 +155,8 @@ NSMutableArray *acctArr;
             [alert dismissViewControllerAnimated:YES completion:nil];
         });
     }
+    [self getName];
+    [_tableView reloadData];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -137,11 +169,13 @@ NSMutableArray *acctArr;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
-    cell.textLabel.text = [acctArr objectAtIndex:indexPath.row];
-    NSLog(@"%@", [acctArr objectAtIndex:indexPath.row]);
+    cell.textLabel.text = @"학생 이름";
+    cell.detailTextLabel.text = [acctArr  objectAtIndex:indexPath.row];
     
     return cell;
 }
 
 
 @end
+
+
