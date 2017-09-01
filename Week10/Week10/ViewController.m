@@ -15,6 +15,7 @@
 
 NSMutableArray *acctArr;
 NSMutableArray *pwArr;
+NSMutableString *studentName;
 
 @implementation ViewController
 
@@ -67,6 +68,7 @@ NSMutableArray *pwArr;
 
 
 - (void) getName {
+    studentName = [[NSMutableString alloc] init];
     NSMutableDictionary *query = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                   (__bridge id)kCFBooleanTrue, (__bridge id)kSecReturnAttributes,
                                   (__bridge id)kSecMatchLimitAll, (__bridge id)kSecMatchLimit,
@@ -99,28 +101,37 @@ NSMutableArray *pwArr;
     NSLog(@"%@", acctArr);
 }
 
-//- (void) getNumber {
-//    NSMutableDictionary *keychainItem = [NSMutableDictionary dictionary];
-//
-//    for (int i = 0; i < [acctArr count]; i++) {
-//        keychainItem[(__bridge id)kSecClass] = (__bridge id)kSecClassInternetPassword;
-//        keychainItem[(__bridge id)kSecAttrAccessible] = (__bridge id)kSecAttrAccessibleWhenUnlocked;
-//        keychainItem[(__bridge id)kSecAttrAccount] = acctArr[i];
-//
-//        keychainItem[(__bridge id)kSecReturnData] = (__bridge id)kCFBooleanTrue;
-//        keychainItem[(__bridge id)kSecReturnAttributes] = (__bridge id)kCFBooleanTrue;
-//
-//        CFDictionaryRef result = nil;
-//        OSStatus sts = SecItemCopyMatching((__bridge CFDictionaryRef)keychainItem, (CFTypeRef *)&result);
-//
-//        if(sts == noErr) {
-//            NSDictionary *resultDict = (__bridge_transfer NSDictionary *)result;
-//            NSData *pswd = resultDict[(__bridge id)kSecValueData];
-//            [pwArr addObject:[NSString stringWithFormat:@"%@", [[NSString alloc] initWithData:pswd encoding:NSUTF8StringEncoding]]];
-//            NSLog(@"%@", pwArr);
-//        }
-//    }
-//}
+- (void) getNumber {
+    NSMutableDictionary *keychainItem = [NSMutableDictionary dictionary];
+
+    keychainItem[(__bridge id)kSecClass] = (__bridge id)kSecClassInternetPassword;
+    keychainItem[(__bridge id)kSecAttrAccessible] = (__bridge id)kSecAttrAccessibleWhenUnlocked;
+    keychainItem[(__bridge id)kSecAttrAccount] = studentName;
+
+    keychainItem[(__bridge id)kSecReturnData] = (__bridge id)kCFBooleanTrue;
+    keychainItem[(__bridge id)kSecReturnAttributes] = (__bridge id)kCFBooleanTrue;
+
+    CFDictionaryRef result = nil;
+
+    OSStatus sts = SecItemCopyMatching((__bridge CFDictionaryRef)keychainItem, (CFTypeRef *)&result);
+
+    NSLog(@"Error Code: %d", (int)sts);
+    
+    NSDictionary *resultDict = (__bridge_transfer NSDictionary *)result;
+    NSData *pswd = resultDict[(__bridge id)kSecValueData];
+    NSString *password = [[NSString alloc] initWithData:pswd encoding:NSUTF8StringEncoding];
+    NSLog(@"ㄴㅇㄴㅇㄴㅇㄴㅇ %@", password);
+    
+    UIAlertController * alert = [UIAlertController
+                                 alertControllerWithTitle:@"선택한 학생의 번호"
+                                 message:password
+                                 preferredStyle:UIAlertControllerStyleAlert];
+    
+    [self presentViewController:alert animated:YES completion:nil];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [alert dismissViewControllerAnimated:YES completion:nil];
+    });
+}
 
 
 - (IBAction)clickedGetBtn:(id)sender {
@@ -174,6 +185,14 @@ NSMutableArray *pwArr;
     
     return cell;
 }
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    studentName = [acctArr objectAtIndex:indexPath.row];
+    NSLog(@"%@", studentName);
+    [self getNumber];
+}
+
+
 
 
 @end
