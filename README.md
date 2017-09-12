@@ -17,3 +17,6 @@
 |  [Week10](https://github.com/Yongjai/iOS_Adv/tree/master/Week10) | 2017.08.31 23:50 | KeyChain |      |
 |  [Week11](https://github.com/Yongjai/iOS_Adv/tree/master/Week11) | 2017.09.07 23:17 | GCD |      |
 
+#### 번외
+[Localization_Example](https://github.com/Yongjai/iOS_Adv/tree/master/Localization_Example)
+
