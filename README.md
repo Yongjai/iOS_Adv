@@ -16,7 +16,7 @@
 |  [Week9](https://github.com/Yongjai/iOS_Adv/tree/master/Week9) | 2017.08.29 20:00 | AVFoundation Photo |      |
 |  [Week10](https://github.com/Yongjai/iOS_Adv/tree/master/Week10) | 2017.08.31 23:50 | KeyChain |      |
 |  [Week11](https://github.com/Yongjai/iOS_Adv/tree/master/Week11) | 2017.09.07 23:17 | GCD |      |
-|  [Week12](https://github.com/Yongjai/iOS_Adv/tree/master/Week12) | 2017.09.14 20:57 | Localization |   [캡쳐](https://github.com/Yongjai/iOS_Adv/blob/master/img/Localization)   |
+|  [Week12](https://github.com/Yongjai/iOS_Adv/tree/master/Week12) | 2017.09.14 20:57 | Localization |   [캡쳐](https://github.com/Yongjai/iOS_Adv/blob/master/img/Localization.png)   |
 
 #### 번외
 [Localization_Example](https://github.com/Yongjai/iOS_Adv/tree/master/Localization_Example)
