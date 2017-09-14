@@ -1,0 +1,12 @@
+
+/* Class = "UILabel"; text = "Taylor Swift"; ObjectID = "870-T2-i8S"; */
+"870-T2-i8S.text" = "한지민";
+
+/* Class = "UILabel"; text = "English"; ObjectID = "j7K-kz-R7g"; */
+"j7K-kz-R7g.text" = "한국어";
+
+/* Class = "UILabel"; text = "Taylor Alison Swift (born December 13, 1989) is an American singer-songwriter. One of the leading contemporary recording artists, she is known for narrative songs about her personal life, which have received widespread media coverage."; ObjectID = "m7p-QQ-D7L"; */
+"m7p-QQ-D7L.text" = "한지민의 어릴 적 꿈은 의사였다. 이유는 조부모님이 한지민은 의사, 언니는 성악가 됐으면 좋겠다고 하셔서 조부모님을 행복하게 해드리고 싶어서 중학교 때까지는 장래희망이 막연히 의사였다고 한다. 하지만 사실 무엇보다 당시 편찮으셨던 할머니를 치료해드리고 싶은 마음이 컸었다고. 한지민의 할머니는 심장병 수술을 하셔서 몸이 불편하시고, 할아버지는 암 투병으로 고생하시다 돌아가신다. 아이들도 너무 좋아해 유치원 선생님을 꿈꾸기도 했고, 노인복지에 관심이 많아서 사회복지사의 꿈을 키우기도 한다.";
+
+/* Class = "UIButton"; normalTitle = "Birthday"; ObjectID = "v90-Nu-4Rc"; */
+"v90-Nu-4Rc.normalTitle" = "생일";

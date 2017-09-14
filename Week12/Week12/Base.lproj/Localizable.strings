@@ -1,0 +1,11 @@
+/* 
+  Localizable.strings
+  Week12
+
+  Created by YongJai on 14/09/2017.
+  Copyright © 2017 YongJai. All rights reserved.
+*/
+
+"Birthday" = "1989-12-13";
+"STYLE" = "dd. MM. YYYY";
+"English Version" = "English Version";
