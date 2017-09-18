@@ -44,8 +44,7 @@ NSArray *dataArr;
     
     // async하게
     // sync일 경우 확실히 느려짐.
-    dispatch_queue_t queue =
-        dispatch_queue_create("googleImage", NULL);
+    dispatch_queue_t queue = dispatch_queue_create("googleImage", NULL);
         dispatch_async(queue, ^{
 
             UIImage * img = [UIImage imageWithData:[NSData dataWithContentsOfURL:url]];
